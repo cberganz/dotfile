@@ -31,8 +31,12 @@ set path+=**
 " Display all matching files when tab complete
 set wildmenu
 
-" map Ctrl-N to toggle NerdTree
+" Key bindings
 map <C-n> :NERDTreeToggle<CR>
+noremap ; l
+noremap l k
+noremap k j
+noremap j h
 
 " auto load NERDTREE when starting vim with no file/folder
 autocmd StdinReadPre * let s:std_in=1
