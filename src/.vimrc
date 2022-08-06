@@ -33,8 +33,8 @@ set wildmenu
 
 " Key bindings
 map <C-n> :NERDTreeToggle<CR>
+"let NERDTreeMapActivateNode='h'
 let NERDTreeMapOpenSplit='h'
-let NERDTreeMapActivateNode='h'
 
 noremap k j
 noremap i k
