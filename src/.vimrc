@@ -33,10 +33,25 @@ set wildmenu
 
 " Key bindings
 map <C-n> :NERDTreeToggle<CR>
-noremap ; l
-noremap l k
+
 noremap k j
+noremap i k
 noremap j h
+
+inoremap <C-j> <Left>
+inoremap <C-k> <Down>
+inoremap <C-i> <Up>
+inoremap <C-l> <Right>
+
+noremap h i
+
+inoremap jk <Esc>
+inoremap kj <Esc>
+
+noremap <C-j> <C-w>h
+noremap <C-k> <C-w>j
+noremap <C-i> <C-w>k
+noremap <C-l> <C-w>l
 
 " auto load NERDTREE when starting vim with no file/folder
 autocmd StdinReadPre * let s:std_in=1
