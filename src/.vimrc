@@ -34,25 +34,27 @@ set wildmenu
 " Key bindings
 map <C-n> :NERDTreeToggle<CR>
 "let NERDTreeMapActivateNode='h'
-let NERDTreeMapOpenSplit='h'
+"let NERDTreeMapOpenSplit='h'
 
-noremap k j
-noremap i k
-noremap j h
+"noremap k j
+"noremap i k
+"noremap j h
 
-inoremap <C-j> <Left>
-inoremap <C-k> <Down>
-inoremap <C-i> <Up>
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 
-noremap h i
+"noremap h i
 
 inoremap jk <Esc>
 inoremap kj <Esc>
+inoremap JK <Esc>
+inoremap KJ <Esc>
 
-noremap <C-j> <C-w>h
-noremap <C-k> <C-w>j
-noremap <C-i> <C-w>k
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
 " auto load NERDTREE when starting vim with no file/folder
