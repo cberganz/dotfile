@@ -16,7 +16,7 @@ set number
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -190,10 +190,10 @@ map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <leader>j mz:m+<cr>`z
-nmap <leader>k mz:m-2<cr>`z
-vmap <leader>j :m'>+<cr>`<my`>mzgv`yo`z
-vmap <leader>k :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <C-j> mz:m+<cr>`z
+nmap <C-k> mz:m-2<cr>`z
+vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
