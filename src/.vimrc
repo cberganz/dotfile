@@ -4,7 +4,7 @@
 """""""""""""""""
 
 " With a map leader it's possible to do extra key combinations
-let mapleader = "<Space>"
+let mapleader = "\<Space>"
 
 " your mouse will work
 set mouse=a
@@ -21,30 +21,20 @@ set laststatus=2
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-" search down into subfolders with :find just use wildcard operator !!
+" search down into subfolders with :find
 set path+=**
-
-" Display all matching files when tab complete
-set wildmenu
-
-" Key bindings
-map <C-n> :NERDTreeToggle<CR>
 
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
 
-" Fast saving
-nmap <leader>w :w!<cr>
-
 " :W sudo saves the file
-" (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
-" Turn on the Wild menu
+" Display all matching files when tab complete
 set wildmenu
 
 " Ignore compiled files
@@ -79,7 +69,7 @@ set hlsearch
 " Makes search act like search in modern browsers
 set incsearch
 
-" Don't redraw while executing macros (good performance config)
+" Don't redraw while executing macros
 set lazyredraw
 
 " For regular expressions turn magic on
@@ -103,30 +93,8 @@ match ExtraWhitespace /\s\+$/
 "	COLORS AND FONTS   "
 """"""""""""""""""""""""
 
-" Change color scheme
-" color monokai
-
 " Enable syntax highlighting
 syntax enable
-
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
-try
-    colorscheme desert
-catch
-endtry
-
-set background=dark
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -190,10 +158,10 @@ map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <C-j> mz:m+<cr>`z
-nmap <C-k> mz:m-2<cr>`z
-vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <leader>j mz:m+<cr>`z
+nmap <leader>k mz:m-2<cr>`z
+vmap <leader>j :m'>+<cr>`<my`>mzgv`yo`z
+vmap <leader>k :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
@@ -203,6 +171,16 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" Key bindings
+map <C-n> :NERDTreeToggle<CR>
+
 
 """""""""""""
 " FUNCTIONS	"
@@ -228,20 +206,23 @@ function! HasPaste()
     return ''
 endfunction
 
+
 """""""""""""""
 "	PLUGINS	  "
 """""""""""""""
 
 call plug#begin('~/.vim/plugged')
-Plug 'lilydjwg/colorizer'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-syntastic/syntastic'
 Plug 'sirver/ultisnips'
 Plug 'pbondoer/vim-42header'
 Plug 'vim-airline/vim-airline'
-Plug 'crusoexia/vim-monokai'
 Plug 'honza/vim-snippets'
+Plug 'crusoexia/vim-monokai'
 call plug#end()
+
+" Change color scheme
+colorscheme monokai
 
 " auto load NERDTREE when starting vim with no file/folder
 autocmd StdinReadPre * let s:std_in=1
@@ -249,3 +230,13 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Close VIM if NERDTREE is only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
