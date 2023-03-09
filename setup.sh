@@ -7,6 +7,8 @@
 #sudo apt remove unattended-upgrades
 #sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+gsettings set org.gnome.mutter workspaces-only-on-primary false
+
 # SETUP AUTOLOAD
 cp -r src/autoload ~/.vim
 
