@@ -45,6 +45,17 @@ gsettings set org.gnome.desktop.default-applications.terminal exec /usr/local/bi
 # Worspace handling on multiple screens
 gsettings set org.gnome.mutter workspaces-only-on-primary false
 
+# Install nvim
+wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
+sudo apt install ./nvim-linux64.deb
+rm nvim-linux64.deb
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.config/nvim/after/packer.nvim
+echo "------"
+echo "TO DO: Enter :PackerUpdate then close nvim when installation done"
+echo "------"
+sleep 10
+nvim
+
 # SETUP AUTOLOAD
 cp -r src/autoload ~/.vim
 
